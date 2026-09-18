@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "genshin-raiden-shogun",
+  "name": "雷神 · 雷寂永恒",
+  "description": "此间寂灭，万雷归宗。一眼惊鸿，一剑封神。",
+  "image": "hero.webp",
+  "background": null,
+  "appearance": "light",
+  "palette": {
+    "accent": "#7047C8",
+    "secondary": "#A67BE8",
+    "surface": "#F5F1FC",
+    "text": "#29203B"
+  },
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.42,
+    "safeArea": "auto"
+  },
+  "modes": {
+    "homeOpacity": 0.96,
+    "workOpacity": 0.96,
+    "detailOpacity": 0.96,
+    "sidebarOpacity": 0.94
+  },
+  "material": {
+    "style": "studio",
+    "panelOpacity": 0.92,
+    "cardOpacity": 0.87,
+    "blur": 22,
+    "radius": 16,
+    "borderStrength": 0.13,
+    "shadowStrength": 0.09
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "doraemon-snow-fortune",
+  "name": "哆啦A梦 · 瑞雪迎福",
+  "description": "瑞雪映暖灯，把冬日好运推到你的桌前。",
+  "image": "hero.webp",
+  "background": null,
+  "appearance": "light",
+  "palette": "auto",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "auto"
+  },
+  "modes": {
+    "homeOpacity": 0.96,
+    "workOpacity": 0.96,
+    "detailOpacity": 0.96,
+    "sidebarOpacity": 0.95
+  },
+  "material": {
+    "style": "studio",
+    "panelOpacity": 0.9,
+    "cardOpacity": 0.86,
+    "blur": 22,
+    "radius": 16,
+    "borderStrength": 0.1,
+    "shadowStrength": 0.08
+  }
+}

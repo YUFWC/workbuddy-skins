@@ -1,0 +1,1104 @@
+:root.workbuddy-ambient-skin {
+  --wbas-light-accent: #5676c8;
+  --wbas-light-secondary: #7f65b8;
+  --wbas-light-surface: #f7f8fb;
+  --wbas-light-text: #20242c;
+  --wbas-dark-accent: #8eafff;
+  --wbas-dark-secondary: #b49af2;
+  --wbas-dark-surface: #11151f;
+  --wbas-dark-text: #f2f5fa;
+  --wbas-accent: var(--wbas-light-accent);
+  --wbas-secondary: var(--wbas-light-secondary);
+  --wbas-surface: var(--wbas-light-surface);
+  --wbas-text: var(--wbas-light-text);
+  --wbas-focus-x: 50%;
+  --wbas-focus-y: 50%;
+  --wbas-home-opacity: 1;
+  --wbas-work-opacity: .16;
+  --wbas-detail-opacity: .08;
+  --wbas-sidebar-opacity: .88;
+  --wbas-panel-opacity: 90%;
+  --wbas-card-opacity: 90%;
+  --wbas-work-surface-opacity: 18%;
+  --wbas-detail-surface-opacity: 24%;
+  --wbas-protected-surface-opacity: 95%;
+  --wbas-material-blur: 18px;
+  --wbas-material-radius: 12px;
+  --wbas-border-strength: 14%;
+  --wbas-shadow-strength: .1;
+  --wbas-bg-brightness: 100%;
+  --wbas-bg-saturation: 100%;
+  --wbas-current-opacity: var(--wbas-home-opacity);
+  color-scheme: dark;
+}
+
+:root.workbuddy-ambient-skin[data-wbas-appearance="light"] { color-scheme: light; }
+:root.workbuddy-ambient-skin[data-wbas-native-appearance="light"] { color-scheme: light; }
+:root.workbuddy-ambient-skin[data-wbas-native-appearance="dark"] {
+  --wbas-accent: var(--wbas-dark-accent);
+  --wbas-secondary: var(--wbas-dark-secondary);
+  --wbas-surface: var(--wbas-dark-surface);
+  --wbas-text: var(--wbas-dark-text);
+  color-scheme: dark;
+}
+:root.workbuddy-ambient-skin[data-wbas-mode="work"] { --wbas-current-opacity: var(--wbas-work-opacity); }
+:root.workbuddy-ambient-skin[data-wbas-mode="detail"] { --wbas-current-opacity: var(--wbas-detail-opacity); }
+
+:root.workbuddy-ambient-skin body[data-application-name="workbuddy"],
+:root.workbuddy-ambient-skin body[data-application-name="workbuddy"] .sidebar-next,
+:root.workbuddy-ambient-skin body[data-application-name="workbuddy"] [data-view-id="sidebar"],
+:root.workbuddy-ambient-skin body[data-application-name="workbuddy"] [class*="input-area-container"],
+:root.workbuddy-ambient-skin body[data-application-name="workbuddy"] [class*="question-floating-card"] {
+  --cb-bg-primary: var(--wbas-surface) !important;
+  --cb-bg-secondary: color-mix(in srgb, var(--wbas-surface) 94%, transparent) !important;
+  --cb-panel-bg-primary: color-mix(in srgb, var(--wbas-surface) 91%, transparent) !important;
+  --cb-bg-card: color-mix(in srgb, var(--wbas-surface) var(--wbas-card-opacity), transparent) !important;
+  --cb-card-background: color-mix(in srgb, var(--wbas-surface) var(--wbas-card-opacity), transparent) !important;
+  --card-bg: color-mix(in srgb, var(--wbas-surface) var(--wbas-card-opacity), transparent) !important;
+  --card-background-color: color-mix(in srgb, var(--wbas-surface) var(--wbas-card-opacity), transparent) !important;
+  --card-border: color-mix(in srgb, var(--wbas-text) 9%, transparent) !important;
+  --card-border-radius: var(--wbas-material-radius) !important;
+  --cb-input-area-container-secondary: color-mix(in srgb, var(--wbas-surface) var(--wbas-panel-opacity), transparent) !important;
+  --cb-question-floating-card-bg: color-mix(in srgb, var(--wbas-surface) var(--wbas-card-opacity), transparent) !important;
+  --cb-question-floating-card-border: color-mix(in srgb, var(--wbas-text) 9%, transparent) !important;
+  --cb-settings-card-background: color-mix(in srgb, var(--wbas-surface) var(--wbas-card-opacity), transparent) !important;
+  --cb-settings-card-border: color-mix(in srgb, var(--wbas-text) 9%, transparent) !important;
+  --cb-input-border: color-mix(in srgb, var(--wbas-text) 10%, transparent) !important;
+  --cb-input-border-color: color-mix(in srgb, var(--wbas-text) 10%, transparent) !important;
+  --cb-input-border-primary: color-mix(in srgb, var(--wbas-text) 10%, transparent) !important;
+  --cb-input-content-border: color-mix(in srgb, var(--wbas-text) 9%, transparent) !important;
+  --cb-input-active-border: color-mix(in srgb, var(--wbas-accent) 42%, transparent) !important;
+  --cb-input-focus-border-color: color-mix(in srgb, var(--wbas-accent) 42%, transparent) !important;
+  --cb-input-content-shadow: 0 8px 24px rgb(16 28 45 / .07) !important;
+  --cb-input-main-area-radius: 14px !important;
+  --cb-input-content-radius: 14px !important;
+  --vscode-chat-requestBorder: transparent !important;
+  --vscode-chat-requestBackground: color-mix(in srgb, var(--wbas-surface) 84%, transparent) !important;
+  --cb-team-member-card-background: color-mix(in srgb, var(--wbas-surface) 92%, transparent) !important;
+  --cb-text-primary: var(--wbas-text) !important;
+  --cb-text-secondary: color-mix(in srgb, var(--wbas-text) 74%, var(--wbas-surface)) !important;
+  --cb-text-tertiary: color-mix(in srgb, var(--wbas-text) 62%, var(--wbas-surface)) !important;
+  --cb-text-disabled: color-mix(in srgb, var(--wbas-text) 48%, var(--wbas-surface)) !important;
+  --cb-text-placeholder: color-mix(in srgb, var(--wbas-text) 58%, var(--wbas-surface)) !important;
+  --cb-text-link: var(--wbas-accent) !important;
+  --cb-icon-default: color-mix(in srgb, var(--wbas-text) 78%, var(--wbas-surface)) !important;
+  --cb-icon-hover: var(--wbas-text) !important;
+  --cb-icon-button-hover-background: color-mix(in srgb, var(--wbas-accent) 16%, transparent) !important;
+  --cb-input-foreground: var(--wbas-text) !important;
+  --cb-input-button-foreground: color-mix(in srgb, var(--wbas-text) 84%, var(--wbas-surface)) !important;
+  --cb-vscode-editor-background: var(--wbas-surface) !important;
+  --cb-vscode-sideBar-background: color-mix(in srgb, var(--wbas-surface) 92%, transparent) !important;
+  --cb-vscode-foreground: var(--wbas-text) !important;
+  --cb-vscode-editor-foreground: var(--wbas-text) !important;
+  --cb-vscode-descriptionForeground: color-mix(in srgb, var(--wbas-text) 72%, var(--wbas-surface)) !important;
+  --cb-vscode-disabledForeground: color-mix(in srgb, var(--wbas-text) 48%, var(--wbas-surface)) !important;
+  --cb-vscode-input-placeholderForeground: color-mix(in srgb, var(--wbas-text) 58%, var(--wbas-surface)) !important;
+  --cb-vscode-list-activeSelectionForeground: var(--wbas-text) !important;
+  --cb-vscode-list-inactiveSelectionForeground: var(--wbas-text) !important;
+  --cb-vscode-badge-foreground: var(--wbas-surface) !important;
+  --cb-vscode-input-background: color-mix(in srgb, var(--wbas-surface) 94%, var(--wbas-text) 6%) !important;
+  --cb-vscode-dropdown-background: color-mix(in srgb, var(--wbas-surface) 96%, var(--wbas-text) 4%) !important;
+  --cb-vscode-list-hoverBackground: color-mix(in srgb, var(--wbas-accent) 16%, transparent) !important;
+  --cb-vscode-toolbar-hoverBackground: color-mix(in srgb, var(--wbas-accent) 16%, transparent) !important;
+  --cb-vscode-scrollbarSlider-background: color-mix(in srgb, var(--wbas-accent) 30%, transparent) !important;
+  --cb-vscode-scrollbarSlider-hoverBackground: color-mix(in srgb, var(--wbas-accent) 48%, transparent) !important;
+  --cb-vscode-textLink-foreground: var(--wbas-accent) !important;
+  --cb-vscode-widget-border: color-mix(in srgb, var(--wbas-text) 12%, transparent) !important;
+  --cb-vscode-panel-border: color-mix(in srgb, var(--wbas-text) 10%, transparent) !important;
+  --cb-button-dark-background: var(--wbas-accent) !important;
+  --cb-button-dark-foreground: var(--wbas-surface) !important;
+  --cb-button-dark-hover-background: color-mix(in srgb, var(--wbas-accent) 84%, var(--wbas-secondary)) !important;
+  --cb-button-primary: var(--wbas-accent) !important;
+  --cb-button-primary-foreground: var(--wbas-surface) !important;
+  --cb-button-secondary-background: color-mix(in srgb, var(--wbas-surface) 88%, var(--wbas-text) 12%) !important;
+  --cb-button-secondary-foreground: var(--wbas-text) !important;
+  --cb-button-secondary-hover-background: color-mix(in srgb, var(--wbas-accent) 20%, var(--wbas-surface)) !important;
+  --cb-button-grey-bg: color-mix(in srgb, var(--wbas-surface) 88%, var(--wbas-text) 12%) !important;
+  --cb-button-grey-fg: var(--wbas-text) !important;
+  --cb-vscode-button-background: var(--wbas-accent) !important;
+  --cb-vscode-button-foreground: var(--wbas-surface) !important;
+  --cb-vscode-button-hoverBackground: color-mix(in srgb, var(--wbas-accent) 84%, var(--wbas-secondary)) !important;
+  --cb-vscode-button-secondaryBackground: color-mix(in srgb, var(--wbas-surface) 88%, var(--wbas-text) 12%) !important;
+  --cb-vscode-button-secondaryForeground: var(--wbas-text) !important;
+  --cb-vscode-button-secondaryHoverBackground: color-mix(in srgb, var(--wbas-accent) 20%, var(--wbas-surface)) !important;
+  --cb-stroke-secondary: color-mix(in srgb, var(--wbas-text) 12%, transparent) !important;
+}
+
+:root.workbuddy-ambient-skin #root {
+  position: relative;
+  isolation: isolate;
+  color: var(--wbas-text) !important;
+  background-color: var(--wbas-surface) !important;
+}
+
+:root.workbuddy-ambient-skin :is(
+  .workbuddy-topbar,
+  [data-view-id="sidebar"],
+  [data-view-id="main-content"],
+  [data-view-id="detail-panel"]
+) {
+  color: var(--wbas-text) !important;
+  caret-color: var(--wbas-accent);
+}
+
+:root.workbuddy-ambient-skin :is(input, textarea)::placeholder {
+  color: color-mix(in srgb, var(--wbas-text) 58%, var(--wbas-surface)) !important;
+  opacity: 1;
+}
+
+:root.workbuddy-ambient-skin #root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: var(--wbas-background-image);
+  background-position: var(--wbas-focus-x) var(--wbas-focus-y);
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(var(--wbas-bg-brightness)) saturate(var(--wbas-bg-saturation));
+  opacity: var(--wbas-current-opacity);
+  transition: opacity 240ms ease, filter 180ms ease;
+}
+
+:root.workbuddy-ambient-skin #root::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0 42%, color-mix(in srgb, var(--wbas-surface) 72%, transparent) 100%);
+  opacity: .72;
+}
+
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] #root::after {
+  background:
+    radial-gradient(ellipse at 16% 8%, color-mix(in srgb, var(--wbas-accent) 14%, transparent), transparent 42%),
+    radial-gradient(ellipse at 88% 18%, color-mix(in srgb, var(--wbas-secondary) 12%, transparent), transparent 38%),
+    linear-gradient(180deg, color-mix(in srgb, var(--wbas-surface) 6%, transparent), color-mix(in srgb, var(--wbas-surface) 68%, transparent));
+  opacity: .72;
+}
+
+:root.workbuddy-ambient-skin[data-wbas-safe="left"] #root::after {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--wbas-surface) 90%, transparent) 0 22%, transparent 52%),
+    linear-gradient(180deg, transparent 0 42%, color-mix(in srgb, var(--wbas-surface) 72%, transparent) 100%);
+}
+
+:root.workbuddy-ambient-skin[data-wbas-safe="right"] #root::after {
+  background: linear-gradient(270deg, color-mix(in srgb, var(--wbas-surface) 90%, transparent) 0 22%, transparent 52%),
+    linear-gradient(180deg, transparent 0 42%, color-mix(in srgb, var(--wbas-surface) 72%, transparent) 100%);
+}
+
+:root.workbuddy-ambient-skin .teams-container,
+:root.workbuddy-ambient-skin .teams-container.is-mac,
+:root.workbuddy-ambient-skin [data-view-id],
+:root.workbuddy-ambient-skin .conversation-list,
+:root.workbuddy-ambient-skin .main-content,
+:root.workbuddy-ambient-skin .main-content--welcome,
+:root.workbuddy-ambient-skin .sidebar-next {
+  background: transparent !important;
+}
+
+:root.workbuddy-ambient-skin [data-view-id="sidebar"] {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-sidebar-opacity) * 100%), transparent) !important;
+  border-right: 1px solid color-mix(in srgb, var(--wbas-accent) 28%, transparent) !important;
+  backdrop-filter: blur(20px) saturate(1.08);
+}
+
+:root.workbuddy-ambient-skin [data-view-id="main-content"] {
+  background: linear-gradient(180deg, transparent 0 40%, color-mix(in srgb, var(--wbas-surface) 70%, transparent) 100%) !important;
+}
+
+:root.workbuddy-ambient-skin[data-wbas-mode="work"] [data-view-id="main-content"],
+:root.workbuddy-ambient-skin[data-wbas-mode="detail"] [data-view-id="main-content"] {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:root.workbuddy-ambient-skin[data-wbas-mode="work"] [data-view-id="main-content"] {
+  background: color-mix(in srgb, var(--wbas-surface) var(--wbas-work-surface-opacity), transparent) !important;
+}
+
+:root.workbuddy-ambient-skin[data-wbas-mode="detail"] [data-view-id="main-content"] {
+  background: color-mix(in srgb, var(--wbas-surface) var(--wbas-detail-surface-opacity), transparent) !important;
+}
+
+:root.workbuddy-ambient-skin [data-view-id="detail-panel"] {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-detail-surface-opacity) + 6%), transparent) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Dense reading and interaction surfaces stay opaque enough for crisp text. */
+:root.workbuddy-ambient-skin :is(
+  [role="dialog"],
+  [role="menu"],
+  [class*="popover"],
+  [class*="dropdown-menu"],
+  [class*="monaco-editor"],
+  [class*="editor-container"]
+) {
+  background-color: color-mix(in srgb, var(--wbas-surface) var(--wbas-protected-surface-opacity), transparent) !important;
+  color: var(--wbas-text) !important;
+  backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.02);
+  -webkit-backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.02);
+}
+
+/* Material Layer: quiet surfaces and light separation built on native WorkBuddy regions. */
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] .workbuddy-topbar {
+  background: color-mix(in srgb, var(--wbas-surface) var(--wbas-panel-opacity), transparent) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--wbas-text) 7%, transparent) !important;
+  box-shadow: none;
+  backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.06);
+  -webkit-backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.06);
+}
+
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] [data-view-id="sidebar"] {
+  border-right-color: color-mix(in srgb, var(--wbas-text) 8%, transparent) !important;
+  box-shadow: 8px 0 28px rgb(16 28 45 / calc(var(--wbas-shadow-strength) * .28));
+  backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.08);
+  -webkit-backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.08);
+}
+
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] [data-view-id="main-content"] {
+  box-shadow: none;
+}
+
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] [data-view-id="detail-panel"] {
+  border-left: 1px solid color-mix(in srgb, var(--wbas-text) 8%, transparent) !important;
+  box-shadow: -8px 0 28px rgb(16 28 45 / calc(var(--wbas-shadow-strength) * .26));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] [class*="input-area-container"],
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] [class*="question-floating-card"] {
+  background: color-mix(in srgb, var(--wbas-surface) var(--wbas-panel-opacity), transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--wbas-text) 9%, transparent) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 24px rgb(16 28 45 / calc(var(--wbas-shadow-strength) * .7)), inset 0 1px 0 color-mix(in srgb, var(--wbas-text) 8%, transparent) !important;
+  backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.06);
+  -webkit-backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.06);
+}
+
+:root.workbuddy-ambient-skin[data-wbas-material="studio"][data-wbas-mode="home"] :is(
+  [class*="welcome-card"], [class*="suggestion-card"], [class*="template-card"],
+  [class*="team-member-card"], [class*="quick-action"], [class*="activity-card"]
+) {
+  background: color-mix(in srgb, var(--wbas-surface) var(--wbas-card-opacity), transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--wbas-text) 8%, transparent) !important;
+  border-radius: var(--wbas-material-radius) !important;
+  box-shadow: 0 8px 22px rgb(16 28 45 / calc(var(--wbas-shadow-strength) * .62)), inset 0 1px 0 color-mix(in srgb, var(--wbas-text) 7%, transparent) !important;
+  backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.06);
+  -webkit-backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.06);
+}
+
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] :is(button, [role="button"]):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--wbas-accent) 76%, white) !important;
+  outline-offset: 2px;
+}
+
+:root.workbuddy-ambient-skin [class*="input-area-container"],
+:root.workbuddy-ambient-skin textarea,
+:root.workbuddy-ambient-skin [contenteditable="true"] {
+  backdrop-filter: blur(18px) saturate(1.06);
+  -webkit-backdrop-filter: blur(18px) saturate(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root.workbuddy-ambient-skin #root::before { transition: none; }
+}
+
+/* ============================================================
+   WorkBuddy 5.5.2 DOM 适配（本地补丁）
+   5.5.2 把聊天容器改名为 .conversation-shell（不透明白底）、
+   输入框改为 .cr-input-container，上游选择器全都匹配不到，
+   导致壁纸被整块白底盖住、看起来"背景没变"。
+   ============================================================ */
+
+/* 1) 聊天主容器：去掉不透明白底，让壁纸透出来 */
+:root.workbuddy-ambient-skin .conversation-shell,
+:root.workbuddy-ambient-skin .conversation-shell__main,
+:root.workbuddy-ambient-skin .conversation-page-chrome,
+:root.workbuddy-ambient-skin .conversation-timeline,
+:root.workbuddy-ambient-skin .teams-main-content,
+:root.workbuddy-ambient-skin .teams-content-wrapper,
+:root.workbuddy-ambient-skin .teams-grid-scroll-content,
+:root.workbuddy-ambient-skin .cr-message-list,
+:root.workbuddy-ambient-skin .cr-message-list-viewport,
+:root.workbuddy-ambient-skin .cr-message-list__content,
+:root.workbuddy-ambient-skin .cr-document,
+:root.workbuddy-ambient-skin .cr-document__virtual-spacer {
+  background: transparent !important;
+}
+
+/* 2) 输入区：做成半透明玻璃卡片，而不是纯白 */
+:root.workbuddy-ambient-skin .cr-input-container {
+  background: color-mix(in srgb, var(--wbas-surface) var(--wbas-panel-opacity), transparent) !important;
+  backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.06);
+  -webkit-backdrop-filter: blur(var(--wbas-material-blur)) saturate(1.06);
+}
+
+/* 3) 侧栏分组标签（"任务 (6)" / "空间 (1)"）
+      原本是不透明 #f2f2f2。86% → 58% → 34% 用户都仍指着说"这里还是白的"，
+      最后按要求**底色完全去掉**，只留一层磨砂保证小字可读。 */
+:root.workbuddy-ambient-skin .conversation-section-label {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 12px)) saturate(1.04);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 12px)) saturate(1.04);
+}
+
+/* 4) 消息列表底部的白色渐隐遮罩 → 跟随表面色，避免出现白色硬边 */
+:root.workbuddy-ambient-skin .cr-message-list__bottom-mask {
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    color-mix(in srgb, var(--wbas-surface) 62%, transparent)
+  ) !important;
+}
+
+/* 关于模糊下限 max()：
+   ◐ 菜单里的「模糊」滑块可以拖到 0px，但 5.5.2 的顶栏是
+   position:sticky + z-index:101，滚动时消息会从它下面穿过去，
+   模糊为 0 时文字会直接透出来糊在标题栏上。
+   所以这里统一用 max(用户模糊值, 14px)：用户调高时依然生效，
+   调到 0 时也保底有一层磨砂，保证可读性。 */
+
+/* 5) 消息内容卡片：降低不透明度，让壁纸"包裹"住它们
+      用 --wbas-panel-opacity 做乘数，这样 ◐ 菜单里的「玻璃面板」滑块依然有效 */
+:root.workbuddy-ambient-skin .cr-code-like-box,
+:root.workbuddy-ambient-skin .cr-code-like-box__header,
+:root.workbuddy-ambient-skin .cr-self-bubble,
+:root.workbuddy-ambient-skin .cr-tool-exp__content,
+:root.workbuddy-ambient-skin .artifact-slot-panel__card {
+  background-color: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.62), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}
+
+/* 6) 顶部标题栏：底色完全去掉（49% → transparent）。
+      保留磨砂：它是 position:sticky + z-index:101，滚动时消息会从它下面穿过，
+      没有磨砂的话文字会直接糊在标题栏上。 */
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] .workbuddy-topbar {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.1);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.1);
+  border-bottom: 1px solid color-mix(in srgb, var(--wbas-text) 6%, transparent) !important;
+}
+
+/* 7) 输入区再透一点，让它像浮在壁纸上的玻璃片 */
+:root.workbuddy-ambient-skin .cr-input-container {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.62), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}
+
+/* 8) 侧栏也稍微透一点，跟整体一致
+      （侧栏是静态的、不覆盖滚动内容，所以不给模糊，省一点渲染开销） */
+:root.workbuddy-ambient-skin[data-wbas-material="studio"] [data-view-id="sidebar"] {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-sidebar-opacity) * 0.82), transparent) !important;
+}
+
+/* 9) 最顶部的应用菜单栏（文件 / 编辑 / 窗口 / 帮助）
+      它是 #workbuddy-menubar-container（position:fixed; z-index:10000），
+      原本是纯 #f2f2f2 的不透明灰底，会在窗口最上沿把壁纸硬生生截断，
+      这也是"图片包不到最顶上"的原因。去掉底色并跟随主题文字色即可。
+      注意：右侧的窗口按钮（— □ ×）是 Electron 原生绘制的，不在 DOM 里，
+      无法用 CSS 控制，所以那部分保持系统样式。 */
+:root.workbuddy-ambient-skin #workbuddy-menubar-container {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--wbas-text) !important;
+  box-shadow: none !important;
+}
+
+/* 10) 侧栏任务卡片：默认透明；选中态固定 50%（原来是 × 0.62 ≈ 61%） */
+:root.workbuddy-ambient-skin [data-view-id="sidebar"] .conversation-agent-card {
+  background-color: transparent !important;
+}
+:root.workbuddy-ambient-skin [data-view-id="sidebar"] .conversation-agent-card[class*="selected"] {
+  background-color: color-mix(in srgb, var(--wbas-surface) 50%, transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 12px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 12px)) saturate(1.05);
+}
+:root.workbuddy-ambient-skin [data-view-id="sidebar"] .conversation-agent-card:hover {
+  background-color: color-mix(in srgb, var(--wbas-surface) 40%, transparent) !important;
+}
+
+/* 11) 折叠区头（"空间"下面那些分组标题）原本是实心 #f2f2f2 */
+:root.workbuddy-ambient-skin .collapsible-section-header {
+  background: transparent !important;
+}
+
+/* 12) "好友加入，积分上涨" 卡片原本是纯白 */
+:root.workbuddy-ambient-skin .conversation-list-invite-friends__card {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.7), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 12px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 12px)) saturate(1.05);
+}
+
+/* 13) 主内容格子容器：5.5.2 给它铺了一层 22% 的表面色，
+       整块盖在壁纸上，等于全窗口蒙了一层白纱。
+       类名带构建哈希（_gridViewItem_1ens7_14），用子串匹配。 */
+:root.workbuddy-ambient-skin [class*="gridViewItem"] {
+  background-color: transparent !important;
+}
+
+/* 14) 壁纸遮罩（#root::after）：上游为了正文可读性，在底部压了一层
+       「表面色 72%」的渐变，再乘 opacity .72 —— 有效白度约 52%，
+       窗口下半部分基本被洗平。这里保留可读性但大幅减弱：
+       - 底部渐变 72% → 46%，起点 42% → 46%
+       - 安全侧渐变 90% → 62%，收窄到 20%
+       （上游这几条都没写 !important，所以这里加 !important 即可稳定覆盖） */
+:root.workbuddy-ambient-skin #root::after {
+  background: linear-gradient(180deg, transparent 0 46%, color-mix(in srgb, var(--wbas-surface) 46%, transparent) 100%) !important;
+  opacity: .72 !important;
+}
+:root.workbuddy-ambient-skin[data-wbas-safe="left"] #root::after {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--wbas-surface) 62%, transparent) 0 20%, transparent 48%),
+    linear-gradient(180deg, transparent 0 46%, color-mix(in srgb, var(--wbas-surface) 46%, transparent) 100%) !important;
+}
+:root.workbuddy-ambient-skin[data-wbas-safe="right"] #root::after {
+  background:
+    linear-gradient(270deg, color-mix(in srgb, var(--wbas-surface) 62%, transparent) 0 20%, transparent 48%),
+    linear-gradient(180deg, transparent 0 46%, color-mix(in srgb, var(--wbas-surface) 46%, transparent) 100%) !important;
+}
+
+/* 15) 侧栏导航项（新建任务 / 助理 / 专家·技能·连接器 / 自动化 / 更多）
+       它们的 hover / 当前项底色在样式表里搜不到（应用 CSS 用了模块化哈希），
+       合成鼠标事件也逼不出来，所以这里**穷举所有状态**一并压平：
+       hover / focus / focus-visible / active / aria-current / aria-selected / data-state。
+       不用 :where() 是为了保留特异性，确保压得住应用自身的规则。 */
+:root.workbuddy-ambient-skin [data-view-id="sidebar"] .conversation-list-tabs :is(
+  .conversation-list-tab-button,
+  .conversation-list-tab-button-box,
+  .conversation-list-tab-row,
+  .conversation-list-tab-button-more,
+  .conversation-list-tab-button-sub,
+  .conversation-list-tab-action-button
+),
+:root.workbuddy-ambient-skin [data-view-id="sidebar"] .conversation-list-tabs :is(
+  .conversation-list-tab-button,
+  .conversation-list-tab-button-box,
+  .conversation-list-tab-row
+):is(:hover, :focus, :focus-visible, :active, [aria-current], [aria-selected="true"], [data-state="active"]) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* 16) 主内容区蒙版 —— 全窗口「洗白」的最大来源（含 topbar、对话区）
+       --wbas-work-surface-opacity / --wbas-detail-surface-opacity 由
+       renderer.mjs 按 clamp(面板不透明度 − 66, 12%, 22%) 算出，并**内联写在
+       <html> 上**。内联声明优先级最高，样式表改不动这个变量本身；面板不透明度
+       拉到 96% 时它顶到上限 22%，于是整块主内容区被盖了一层表面色，顶栏、
+       对话区一起发灰（实测纯壁纸 181,179,177 → 被抬到 198,199,198）。
+       这里不碰变量，直接在规则层面把 background 压平 —— 本补丁段位于上游
+       第 208~230 行之后，同源、同特异性(0,4,0)、同为 !important，后写的胜出。
+       正文可读性由消息卡（规则 5，panel × 0.62）继续兜住。 */
+:root.workbuddy-ambient-skin[data-wbas-mode="work"] [data-view-id="main-content"],
+:root.workbuddy-ambient-skin[data-wbas-mode="detail"] [data-view-id="main-content"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 17) 输入框内部禁止 backdrop-filter —— 消除上下两半的「图层色差」
+       现象：输入框上半（可编辑区）浮出一块明显更亮的浅色板，与下半（工具条
+       ＋/默认权限/模型选择）形成 13~19 的色阶缝，看起来像两层不同的材质。
+       成因：上游第 301~306 行给 [contenteditable="true"] / textarea /
+       [class*="input-area-container"] 加了 backdrop-filter，而在 5.5.2 里这些
+       元素正是 .cr-input-container 的子元素 —— 父级自己也有 backdrop-filter。
+       子元素一旦带 backdrop-filter 就会建立新的 backdrop root，Chromium 会把
+       父级的玻璃底色**再合成一遍**（等价于玻璃叠两次）：
+
+         无子级 bf：面板 = 玻璃叠一次             = 220   ← 与工具条一致
+         有子级 bf：面板 = 玻璃再叠一次
+                    0.5952 × 240 + 0.4048 × 220  = 232   ← 实测 232，误差 0
+
+       实测 blur(0px) / blur(14px) / saturate(1.06) / blur(18px) saturate(1.06)
+       四者像素完全相同 → 与模糊半径、饱和度都无关，只要属性存在就会翻倍。
+       所以这里必须整体置 none，不能用"把半径调小"来缓解。
+       作用域限定在 .cr-input-container 内：其它位置的 contenteditable 没有
+       玻璃父级，保留上游的磨砂不影响。 */
+:root.workbuddy-ambient-skin .cr-input-container :is(
+  [contenteditable="true"],
+  textarea,
+  [class*="input-area-container"]
+) {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* 18) 输入框右下角：去掉模型选择器那圈纯白胶囊
+       .cr-input-toolbar__right 是 rgb(255,255,255) 不透明底（实测 277×32），
+       里面装着上下文用量环 / 模型选择器 / 发送键 —— 是输入框内**唯一**剩下的
+       白色块，用户会直接指着它说"这里也是"。
+       实测：用合成鼠标事件（Input.dispatchMouseEvent）逼过 hover，
+       该子树**没有任何 hover / active 底色**（只有这一个白底），
+       所以直接置透明即可，不用像规则 15 那样穷举状态。
+       ⚠️ 千万不要顺手给它加 backdrop-filter —— 那会和规则 17 同一个坑：
+       子元素带 backdrop-filter 会把父级 .cr-input-container 的玻璃再合成一遍，
+       反而制造出新的色差（比原来的白胶囊更糟，因为它会亮得没道理）。 */
+:root.workbuddy-ambient-skin .cr-input-toolbar__right {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 19) 「新建任务」页（home 路由）整块白底 —— 规则 16 管不到的那一层
+       现象：对话页壁纸正常，但一点「新建任务」，主内容区就被一整块不透明底
+       盖住；只有真正发起一次对话（DOM 换成 .conversation-shell）才恢复。
+       成因：home 路由的页面容器是 `main.wb-home-route`（不透明 rgb(255,255,255)，
+       实测 264,30 1327×844）。它在 DOM 里是 `[data-view-id="main-content"]`
+       （= `div._gridViewItem_*`）的**子元素**：
+         main.wb-home-route
+           └ div.teams-main-content
+               └ div.teams-content-wrapper
+                   └ div._gridViewItem_1ens7_14   ← 规则 16 压平的是这一层
+       规则 16 只把 main-content 自己变透明了，盖不住里面这个子元素，
+       所以 home 页整块还是白的。
+       ⚠️ 用 `[class~="wb-home-route"]`（精确类名 token）而不是 `[class*="..."]`：
+       后者会连带命中 `wb-home-route__input` / `wb-home-route__input-wrap`
+       这些子容器，虽然目前无害，但语义上不该一起改。
+
+       同一页还有 5 类浅色块，一并处理（实测清单，2026-09-17）：
+         div.cr-input-box__main       渐变 rgb(235,235,235)→rgb(245,245,245)，800×186
+         div.wb-scene-tabs            实心 rgb(235,235,235)，场景切换轨道 206×36
+         div.quick-actions::after     右侧白色渐隐 linear-gradient(270deg,#fff 50%,…)
+         button.quick-actions__item   8 个纯白胶囊（文档处理 / 金融服务 / …）
+         button.quick-actions__arrow  翻页箭头 rgb(242,242,242)
+       —— 前 3 个是「结构性底色」，全透明；后 2 个是**可点控件**，给玻璃底
+       （与规则 5/10/12 同一套 `panel × 0.62` 玻璃，保留可点感与 hover 反馈）。 */
+:root.workbuddy-ambient-skin [class~="wb-home-route"],
+:root.workbuddy-ambient-skin .cr-input-box__main,
+:root.workbuddy-ambient-skin .wb-scene-tabs {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+:root.workbuddy-ambient-skin .quick-actions::after {
+  background-image: none !important;
+}
+
+:root.workbuddy-ambient-skin .quick-actions__item,
+:root.workbuddy-ambient-skin .quick-actions__arrow {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.62), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}
+
+/* ⚠️ 不要动 .wb-scene-tabs__pill--active（当前选中的场景标签）：
+      它是 rgba(0,0,0,0.75) 深色胶囊 + **白色文字**（实测 color: rgb(255,255,255)）。
+      改成浅色玻璃会让白字彻底看不见。它是个功能性「选中态指示器」，
+      不是洗白来源，保留原样。 */
+
+/* 20) 其余路由页（助理 / 专家·技能·连接器 / 自动化 / 更多）的整块白底
+       和规则 19 是同一个套路：`[data-view-id="main-content"]` 里的**路由容器**
+       自带不透明白底，规则 16 只把 main-content 自己压平了，盖不住这层子元素。
+
+       用 scripts/_scan_routes.py 遍历侧栏入口一次性找全（2026-09-17 实测）：
+         助理              div.claw-workspace          rgb(255,255,255)  覆盖 100%
+         专家·技能·连接器   section.expert-center-page  rgb(255,255,255)  覆盖 100%
+         自动化 / 更多      div.automation-main-page    rgb(255,255,255)  覆盖 100%
+         专家页卡片底图     img.ec-featured-scene-bg    rgb(255,255,255)  各 4.9%
+
+       ⚠️ 这里刻意用**显式类名**而不是"main-content 的所有子元素都透明"这种通杀规则：
+       通杀规则会把某些页面里本该有底色的直属子元素也一起干掉，风险更大。
+       以后 WorkBuddy 新增路由页时，跑一次 `_scan_routes.py` 就能定位到新的容器，
+       照着往下面这张表里加一行即可 —— 不要靠一页页截图去猜。 */
+:root.workbuddy-ambient-skin .claw-workspace,
+:root.workbuddy-ambient-skin .expert-center-page,
+:root.workbuddy-ambient-skin .automation-main-page {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+:root.workbuddy-ambient-skin img.ec-featured-scene-bg {
+  background-color: transparent !important;
+}
+
+/* 21) 「专家·技能·连接器」页：页面容器（规则 20）透明之后，剩下的白是**内容卡片**
+       本身 —— 实测这一页有 174 个 `.ec-expert-card`（纯白，合计 910 万 px），
+       外加工具栏上几个浅色控件。整页是一套自带设计系统的目录页（`ec-*`）。
+       按全局一致的玻璃处理（和消息卡、快捷胶囊同一套 `panel × 0.62`），
+       这样既透出壁纸、又保住密集小字的可读性。
+
+       ⚠️ 性能提醒：这一页玻璃元素多（174 张卡 + 工具栏），
+       `backdrop-filter` 是有成本的。若滚动发涩，把下面这段的 backdrop-filter
+       两行注释掉即可（只留半透明底，仍然透壁纸，但没有模糊）。
+       ⚠️ 不要碰 `.ec-card-summon-btn`（rgba(0,0,0,.9) 深色按钮）和
+       `.um-tab--active`（深色选中态）—— 那是功能性对比，不是洗白来源。 */
+:root.workbuddy-ambient-skin .ec-expert-card,
+:root.workbuddy-ambient-skin .ec-featured-scene-card,
+:root.workbuddy-ambient-skin .ec-featured-scene-avatar,
+:root.workbuddy-ambient-skin .ec-sort-group,
+:root.workbuddy-ambient-skin .ec-category-tab,
+:root.workbuddy-ambient-skin .ec-sort-btn,
+:root.workbuddy-ambient-skin .ec-featured-scenes-next,
+:root.workbuddy-ambient-skin .wb-input-wrapper,
+:root.workbuddy-ambient-skin .wb-button--secondary {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.62), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}
+
+/* 22) 「我的文件」以及其它**面板页**：这次找到的是设计令牌，不是某个类名
+       ------------------------------------------------------------------
+       现象：点「我的文件」整页白底（用户 2026-09-17 截图）。
+       成因：`--wb-bg-content` 这个**基础设计令牌** = `var(--wb-palette-white-100)`
+       = `#FFFFFF`（暗色下是 `#1a1a1a`），而 `.my-files-panel` 就是
+       `background: var(--wb-bg-content)`。
+
+       ⚠️ 为什么这次改令牌而不是逐个列类名：
+       在 asar 里把整个 CSS 扫了一遍，`--wb-bg-content` 只被 **9 个选择器**使用，
+       而且**全是面板外壳**：
+         .my-files-panel / .my-files-flat-header            （我的文件）
+         .tencent-lexiang-panel / --iframe / list__header / catalog__header（乐享）
+         .tencent-docs-panel                                （腾讯文档）
+         .ima-panel / .ima-library-view__loading-overlay     （ima）
+       令牌名字本来就是"内容区背景"，语义上正好就是我们要换成壁纸的那一层。
+       改一处 = 9 个面板页一起好，而且以后新增用同一令牌的面板也自动生效，
+       不用再一页页打地鼠。
+       （唯一略勉强的是 loading-overlay —— 透明后能看到底下的面板，
+        视觉上反而更自然。）
+
+       下面的显式选择器是**保险丝**：万一哪天上游把面板改成写死颜色、
+       不再走令牌，这几条还能兜住已经验证过的那几个页面。 */
+:root.workbuddy-ambient-skin {
+  --wb-bg-content: transparent !important;
+}
+
+:root.workbuddy-ambient-skin .my-files-panel,
+:root.workbuddy-ambient-skin .my-files-flat-header,
+:root.workbuddy-ambient-skin .tencent-docs-panel,
+:root.workbuddy-ambient-skin .ima-panel {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 我的文件页里的小控件（搜索框 / 筛选按钮 / 容量条 / 选中栏 / 文件类型徽标 / Tab 角标）→ 玻璃 */
+:root.workbuddy-ambient-skin .my-files-search,
+:root.workbuddy-ambient-skin .my-files-filter-btn,
+:root.workbuddy-ambient-skin .my-files-selection-bar,
+:root.workbuddy-ambient-skin .my-files-storage-bar,
+:root.workbuddy-ambient-skin .my-files-ws-meta,
+:root.workbuddy-ambient-skin .my-files-file-ext-badge,
+:root.workbuddy-ambient-skin .my-files-tab-badge {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.62), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}
+
+/* ⚠️ 这一页**故意没动**的几处（都是功能性对比，不是洗白来源）：
+     .my-files-storage-bar-fill       容量条的填充色 rgb(0,0,0)  —— 进度指示
+     .my-files-storage-info__tooltip  深色 tooltip rgba(0,0,0,.9)
+     .my-files-context-menu           右键菜单 —— 走的是**弹层令牌** --wb-bg-popover
+     .my-files-filter-menu            筛选下拉 —— 同上
+   `--wb-bg-popover` 被 **42 个选择器**使用（全站所有下拉/右键菜单/弹窗，
+   含 .skill-upload-modal / .netdrive-selector-modal 等**模态框**）。
+   覆盖它 = 全站弹层一起变玻璃，属于比"页面发白"大得多的改动，所以留给你决定：
+   想试的话在下面加一行即可（不满意删掉就回滚）——
+     :root.workbuddy-ambient-skin { --wb-bg-popover: transparent !important; } */
+
+/* 23) 「资料库」面板 —— 国内版特有的组件（2026-09-17 用户截图）
+       ------------------------------------------------------------------
+       国内版侧栏比国际版多三项：项目 / 定时任务 / 资料库。
+       这三个入口由 product.json 的 `productFeaturesConfig` 开关驱动，
+       所以两版**渲染代码相同**（实测 app.asar 逐字节 99.8% 一致），
+       只是国内版多开了功能入口 —— 皮肤规则是通用的，不需要为国内版单开一套。
+
+       资料库面板的层级：
+         .sidebar-next > .sidebar-next-body > .detail-panel (+ .detail-sidebar)
+       它的白色来自**另一个令牌** `--wb-bg-primary`（`.detail-panel` 用它），
+       左侧导航列则是 `.detail-sidebar` → `var(--cb-panel-bg-primary, #FFFFFF)`。
+
+       ⚠️ `--wb-bg-primary` 全站出现 **874 次**，绝对不能像规则 22 那样覆盖令牌
+       （会波及全站卡片/输入框）。只能点名压平这几个外壳。
+
+       ⚠️ `.detail-sidebar` 的原规则带 4 层祖先选择器
+       （`.sidebar-next-body > .detail-panel.detail-panel--no-header .detail-sidebar`），
+       **裸元素探测测不到它** —— 这也是「假元素探测」的已知盲区：
+       只匹配裸元素的选择器能测到，带祖先限定的测不到。
+       好在我们的声明带 `!important`，能压过它那串非 important 的高特异性选择器。
+
+       面板内的 `cfp-*`（云端文件面板）控件 → 玻璃；
+       `cfp-*-modal*` / `cfp-*-menu` / `cfp-*-dropdown__menu` 是**弹窗和菜单**，
+       和 `.my-files-*-menu` 同理（走 --wb-bg-popover），留给用户决定要不要一起玻璃。 */
+:root.workbuddy-ambient-skin .detail-panel,
+/* ⚠️  是关键的一层：它用 var(--cb-panel-bg-primary)，而**我们自己在
+   第 54 行**把这个令牌映射成了 "surface 91%" —— 于是资料库面板看着就是白的。
+   这不是 app 的白底，是我们自己令牌映射过粗。 */
+:root.workbuddy-ambient-skin .project-detail-view,
+:root.workbuddy-ambient-skin .project-detail-view__panel,
+:root.workbuddy-ambient-skin .detail-main__html-editor-overlay,
+:root.workbuddy-ambient-skin .detail-main__space-overlay,
+:root.workbuddy-ambient-skin .detail-layout,
+:root.workbuddy-ambient-skin .detail-sidebar,
+:root.workbuddy-ambient-skin .sidebar-next--windows-chrome,
+:root.workbuddy-ambient-skin .detail-header,
+:root.workbuddy-ambient-skin .detail-sidebar__header-slot {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+:root.workbuddy-ambient-skin .cfp-search,
+:root.workbuddy-ambient-skin .cfp-filter-btn,
+:root.workbuddy-ambient-skin .cfp-selection-bar,
+:root.workbuddy-ambient-skin .cfp-list__header,
+:root.workbuddy-ambient-skin .cfp-card,
+:root.workbuddy-ambient-skin .cfp-tab__cnt,
+:root.workbuddy-ambient-skin .cfp-quota-track,
+:root.workbuddy-ambient-skin .cfp-drag-ghost,
+/* 资料库面板里同样吃 --cb-panel-bg-primary(91%) 的几处（该令牌有 70 个使用者，
+   含菜单/弹窗，不能全局调低，只能点名） */
+:root.workbuddy-ambient-skin .project-detail-view__header,
+:root.workbuddy-ambient-skin .sidebar-next-main-header,
+:root.workbuddy-ambient-skin .sidebar-next-floating-actions,
+:root.workbuddy-ambient-skin .detail-main__preview-slot--file-tree,
+/* 「项目」页的卡片 —— ⚠️ 这两个是**活体扫描**才发现的：
+   .project-grid__card 的原规则带祖先限定（裸元素探测测不到），
+   .landing-template-card 是首页模板卡。假元素探测有盲区，以活体扫描为准。 */
+:root.workbuddy-ambient-skin .project-grid__card,
+:root.workbuddy-ambient-skin .landing-template-card {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.62), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}
+
+/* ============================================================
+   25) 「灵感」页（discover / playbook 卡片流）—— 2026-09-17 第四轮用户截图
+   ------------------------------------------------------------------
+   用户红框圈的是**标题行那一条白带**（「灵感 常见工作流沉淀成…」+ 右侧
+   搜索框/我的收藏）。实测发现元凶**不是** header 本身 ——
+   `dc-header` / `dc-header-left` / `dc-title` / `dc-subtitle` 全都是
+   `rgba(0,0,0,0)`，真正发白的是**整页外壳**：
+
+     .teams-main-content > .discover-panel-page   ← 1218×858，rgb(255,255,255)
+
+   祖先链 `.teams-content-wrapper` / `_gridViewItem_*` 都是透明的，
+   所以只要压平 `discover-panel-page` 这一层，标题行的白带就没了。
+   （⚠️ 又一次印证「名字像标题的元素往往没色，实心背景挂在外壳上」——
+     和资料库那轮的 `wb-home-page-title-pc` 是同一个坑。）
+
+   ⚠️ 这个页面是**主文档内**的，不是跨域 iframe —— 所以直接写在 ambient.css 里
+   就行，**不需要** space-glass.css 那套 CDP 注入 + 自愈机制。
+
+   ⚠️ `dc-*` 是 CSS Module 生成的**稳定前缀**（不像 `_scrollListWrapper_1yamy_5`
+   带构建哈希），但为保险起见，带哈希的仍然用 `[class*=...]` 子串匹配。 */
+
+/* 25a) 整页外壳 → 透明（标题行白带的根因） */
+:root.workbuddy-ambient-skin .discover-panel-page,
+:root.workbuddy-ambient-skin .teams-main-content,
+:root.workbuddy-ambient-skin .teams-content-wrapper,
+:root.workbuddy-ambient-skin .workbuddy-topbar {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 25b) 页头 / 标题 / 副标题 —— 本来就透明，这里显式写死，
+       防止以后 app 版本更新给它们加上底色时又变白 */
+:root.workbuddy-ambient-skin .dc-header,
+:root.workbuddy-ambient-skin .dc-header-left,
+:root.workbuddy-ambient-skin .dc-header-right,
+:root.workbuddy-ambient-skin .dc-title,
+:root.workbuddy-ambient-skin .dc-subtitle,
+:root.workbuddy-ambient-skin .dc-content-wrapper {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 25c) 分类 tab 栏 —— 分两层处理，**不能一把梭**：
+
+       ⚠️ 踩过的坑：用 `[class*="dc-category-tab"]` 一个选择器同时命中外层
+       滚动容器 `.dc-category-tabs`（1218×52 整条）和里面的每个药丸按钮
+       `.dc-category-tab`（49×28）。结果**整条容器也变成玻璃**，
+       在壁纸上就显出一条 1218×52 的浅灰横带 —— 比原来的白条更突兀。
+
+       正确做法：
+         · 外层 `.dc-category-tabs`（滚动容器）→ **透明**，它只是布局壳
+         · 内层 `.dc-category-tab`（药丸按钮）→ 玻璃，保留"可点"的质感
+       两者差一个 `s`，用完整类名区分，不要用子串匹配。 */
+:root.workbuddy-ambient-skin .dc-category-tabs,
+:root.workbuddy-ambient-skin [class*="scrollListWrapper"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+:root.workbuddy-ambient-skin .dc-category-tab {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.52), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}
+/* 选中态（`dc-category-tab is-active`）—— 用一点主色，别和未选中一个样 */
+:root.workbuddy-ambient-skin .dc-category-tab.is-active,
+:root.workbuddy-ambient-skin .dc-category-tab[class*="active"] {
+  background: color-mix(in srgb, var(--wbas-accent) 24%, transparent) !important;
+  color: var(--wbas-text) !important;
+}
+
+/* 25d) 卡片流 —— dc-playbook-card ×1053（纯白）+ dc-card-cover ×1053
+       （rgb(235,235,235) 的封面占位块）。这是**内容卡片海**，和资料库
+       里的卡片同理：保留玻璃质感，不要把内容也压成透明。 */
+:root.workbuddy-ambient-skin .dc-playbook-card {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.62), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 18px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 18px)) saturate(1.05);
+  border-color: color-mix(in srgb, currentColor 10%, transparent) !important;
+}
+
+/* 封面占位块 —— 原来是 rgb(235,235,235) 实心浅灰。
+   压成很淡的一层即可：它只是"图还没加载"的占位，不需要实心。 */
+:root.workbuddy-ambient-skin .dc-card-cover,
+:root.workbuddy-ambient-skin .dc-card-cover-portrait,
+:root.workbuddy-ambient-skin [class*="dc-card-cover"] {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.34), transparent) !important;
+  background-image: none !important;
+}
+
+/* 卡片上的小徽标（HTML / Markdown / 官方头像底）—— 保持可读，淡玻璃即可 */
+:root.workbuddy-ambient-skin .dc-card-artifact-type,
+:root.workbuddy-ambient-skin .dc-card-creator-avatar {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.52), transparent) !important;
+}
+
+/* 25e) 页头控件：搜索框 + 「我的收藏」按钮 */
+:root.workbuddy-ambient-skin .dc-search-input,
+:root.workbuddy-ambient-skin .dc-search-wrapper {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.52), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}
+:root.workbuddy-ambient-skin .dc-fav-filter-btn {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.52), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}
+
+/* ============================================================
+   26) 「乐享知识库」面板（tencent-lexiang-panel）—— 2026-09-17 用户截图
+   ------------------------------------------------------------------
+   页面是「连接乐享作为 AI 知识库」的授权引导页。
+
+   ⚠️ 第三次遇到同一个模式：内部元素**全是透明的**，白色只挂在**整页外壳**上。
+
+     ._gridView_1rywu_9 > ._gridViewItem_1rywu_14 > .teams-content-wrapper
+       > .teams-main-content > .route-keep-alive-slot
+         > .tencent-lexiang-panel      ← 1218×858  rgb(255,255,255)  ← 真凶
+             └ .lexiang-auth-guide / __content / __brands / __title / __desc
+               / __permissions-list / __permission-*  → 全部 rgba(0,0,0,0)
+
+   前两轮分别是 `wb-home-page-title-pc`（资料库）和 `dc-title`（灵感）——
+   **同一类坑，第三次了**：名字像标题/内容的元素往往没色，
+   实心背景挂在最外层那个"面板/页面"容器上。
+   → 排查顺序固定为：先看**最大面积**那个实心浅色元素，不要去猜标题类名。
+
+   ⚠️ 这个面板在**主文档内**（和「灵感」页一样），不是跨域 iframe，
+   所以直接写进 ambient.css 即可，不需要 CDP 注入。 */
+
+/* 26a) 整页外壳 → 透明（根因） */
+:root.workbuddy-ambient-skin .tencent-lexiang-panel,
+:root.workbuddy-ambient-skin .tencent-lexiang-panel__auth,
+:root.workbuddy-ambient-skin .route-keep-alive-slot,
+:root.workbuddy-ambient-skin .lexiang-auth-guide,
+:root.workbuddy-ambient-skin .lexiang-auth-guide__content {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 26b) 权限说明卡 —— 这是**内容**，保留玻璃质感（原来是 rgb(247,247,247) 实心） */
+:root.workbuddy-ambient-skin .lexiang-auth-guide__permissions {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.52), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 18px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 18px)) saturate(1.05);
+  border: 1px solid color-mix(in srgb, currentColor 10%, transparent) !important;
+}
+
+/* 26c) ⚠️ 主行动按钮**不能**透明化。
+       它原本是 rgba(0,0,0,.9) 深色底 + 白字，压透明的话白字会直接看不见。
+       保留深色，只把圆角/描边对齐玻璃风格。 */
+:root.workbuddy-ambient-skin .lexiang-auth-guide__btn {
+  /* 刻意不覆盖 background —— 保持 app 原本的深色主按钮 */
+  backdrop-filter: blur(max(var(--wbas-material-blur), 8px));
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 8px));
+}
+
+/* 26d) 品牌图标底色（WorkBuddy 绿 / 乐享蓝）—— 这是**品牌识别**，保留。
+       只去掉可能存在的边框，不改底色。 */
+:root.workbuddy-ambient-skin .lexiang-auth-guide__brand-icon {
+  border: 1px solid color-mix(in srgb, currentColor 8%, transparent) !important;
+}
+
+/* 26e) 知识库**文件列表**的表头行（「文件名称 / 更新时间」）—— 2026-09-17 用户截图
+       ------------------------------------------------------------------
+       元素：`.tencent-lexiang-catalog__header`（946×36 `rgb(255,255,255)`）
+
+       ⚠️⚠️ **用户这次明确要求「50% 透明」**，不是前面几轮那种全透明，
+       所以这里用 `rgb(... / .5)` 而**不是** `transparent`。
+       原因也合理：表头要和下面的文件行区分开，全透会糊成一片。
+       → 不要"顺手统一成全透明"，用户对力度是有明确要求的。
+
+       顺带说明：这一行在结构上是**独立**的 —— 祖先链
+       `.tencent-lexiang-catalog` / `__files-body` / `__files` / `__scroll`
+       / `__layout__main` **全都已经透明**，`__row`（文件行）×7 也全透明。
+       所以**只需要改这一个元素**，别扩大到容器上去（会连累其他区域）。
+
+       分隔线 `tencent-lexiang-panel__files-divider`（`rgb(230,230,230)` 1px）
+       保留 —— 它是表头与列表之间的视觉分界，全透会失去层次。 */
+:root.workbuddy-ambient-skin .tencent-lexiang-catalog__header {
+  background: rgb(255 255 255 / 0.5) !important;
+  background-color: rgb(255 255 255 / 0.5) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 12px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 12px)) saturate(1.05);
+}
+/* 深色主题下换成同透明度的深色底 */
+:root.workbuddy-ambient-skin[data-wbas-native-appearance="dark"] .tencent-lexiang-catalog__header {
+  background: rgb(17 21 31 / 0.5) !important;
+  background-color: rgb(17 21 31 / 0.5) !important;
+}
+
+/* ============================================================
+   27) 视频背景层（#wbas-video-layer）—— 本地 file:// 视频铺底
+   ------------------------------------------------------------------
+   用户需求：在现有壁纸机制之外，**额外**叠一层循环播放的视频。
+
+   实现要点（都已实测验证）：
+     · 伪元素放不了 <video> → 必须是**真实 DOM 元素**，
+       由 renderer.mjs 插入到 `#root` 里（和 `#root::before` 同坐标系）
+     · `z-index:-2` + `position:fixed` + `object-fit:cover` + `pointer-events:none`
+       —— 和静态壁纸同一层，鼠标穿透
+     · **必须 muted + autoplay + playsinline**，否则浏览器拦截自动播放
+     · 只支持**本地 file:// 视频**：实测 `file:///D:/xxx.mp4` 可正常加载
+       （readyState=4、1920×1080、像素可读），**不受 CORS 限制，不需要改启动参数**。
+       ⚠️ 路径**必须用 Windows 盘符写法** `D:/...`；写成 Git Bash 的 `/d/...`
+       会报 `MEDIA_ELEMENT_ERROR: Format error`（踩过）。
+       renderer.mjs 的 normalizeVideoSrc() 会自动把 `D:/a/b.mp4` 转成
+       `file:///D:/a/b.mp4`，所以两种写法都能吃。
+
+   ⚠️ 视频开启时**静态壁纸要让位**（否则两层叠着互相干扰）：
+       用 `html[data-wbas-video="on"]` 选择器把 `#root::before` 的
+       background-image 置空。用 attribute 而不是 :has() —— 兼容性更稳。 */
+
+/* 27a) 视频开启时隐藏静态壁纸层 */
+:root.workbuddy-ambient-skin[data-wbas-video="on"] #root::before {
+  background-image: none !important;
+}
+
+/* 27b) 视频层本体（内联样式已设大部分，这里兜底 object-fit 与大屏缩放） */
+#wbas-video-layer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  pointer-events: none;
+  /* ⚠️ 不加 backdrop-filter —— 视频本身是底，模糊它没意义还费 GPU */
+}
+
+/* 27c) 视频模式下底部渐变蒙版要更强一点：
+       视频画面通常比静态图亮/花，否则底部文字读不清 */
+:root.workbuddy-ambient-skin[data-wbas-video="on"] #root::after {
+  opacity: .82;
+}
+
+/* 28) 首页文字（hero 主标题 / 副标题 / 两个快捷按钮）
+       —— 用户自定义文案后，由注入器在这些节点上打 data-wbas-text 标记，
+          这里只负责让**副标题槽位**真的显示出来。
+
+   ⚠️ 原生 .wb-home-header__slogan-slot 是 `display:grid` 且
+      `grid-template-rows: 0px` —— WorkBuddy 用它做「折叠到 0 高」，
+      所以光把文本塞进去是看不见的（实测 inner 的 scrollHeight 是 19px，
+      但 offsetHeight 是 0）。只改 height/overflow 都没用，**必须**
+      把 grid-template-rows 放开。实测 `grid-template-rows:auto` → 19px。
+   ⚠️ 用 :has() 把展开条件绑在「我们确实写了副标题」上，用户清空后
+      标记消失，槽位自动收回 0 高，不用 JS 再管一次布局。
+      （Chromium 138 实测 CSS.supports('selector(:has(*))') === true）      */
+.wb-home-header__slogan-slot:has(> .wb-home-header__slogan-slot-inner[data-wbas-text="slogan"]) {
+  grid-template-rows: auto;
+  overflow: visible;
+}
+
+.wb-home-header__slogan-slot-inner[data-wbas-text="slogan"] {
+  overflow: visible;
+  padding-top: 2px;
+  text-align: center;
+  font-size: 13.5px;
+  line-height: 1.55;
+  letter-spacing: .3px;
+  /* 首页背景常是花哨的壁纸，给文字一点阴影保证可读 */
+  text-shadow: 0 1px 12px rgb(0 0 0 / .55), 0 0 2px rgb(0 0 0 / .35);
+}
+
+/* 主标题自定义后同样补一点阴影（原生标题在深色壁纸上已经偏糊） */
+.wb-home-header__title [data-wbas-text="title"] {
+  text-shadow: 0 1px 16px rgb(0 0 0 / .5), 0 0 2px rgb(0 0 0 / .3);
+}
+
+/* 两个快捷按钮：文字长度可能和原生差很多，别让它把按钮撑变形。
+   原生按钮靠 padding 撑宽，这里限制一下最大宽度并允许省略。 */
+.wb-scene-tabs__pill [data-wbas-text^="chip"] {
+  display: inline-block;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+/* 29) 「专家·技能·连接器」页的**技能 / 连接器**两个 Tab（2026-09-17 用户截图）
+       ----------------------------------------------------------------
+       现象：同一页的三个 Tab 里，「专家」已经透明了，但「技能」和「连接器」
+       点进去还是整片白底（用户：「这两个遗漏了」）。
+
+       成因：规则 20 只把外层 `section.expert-center-page` 压平了，
+       但**每个 Tab 有自己的一层容器**，容器和卡片都自带不透明底。
+
+       用 scripts/_scan_expert_deep.py 穷举子树里所有不透明元素（实测数据）：
+
+         Tab      元素                                  数量   合计面积    深色下的值
+         技能     div.skills-view                          1    1,220,900   rgb(20,20,20)  ← 页面容器
+         技能     div.skill-card（含 --skeleton 变体）     99    3,696,541   rgb(36,36,36)  ← 卡片
+         连接器   div.connector-panel                      1    1,220,900   rgb(20,20,20)  ← 页面容器
+         连接器   div.connector-card--available           14      497,224   rgb(36,36,36)  ← 卡片
+
+       ⚠️ 深色下量到的是 rgb(20,20,20) / rgb(36,36,36)，浅色下就是 #fff ——
+          因为卡片底走的是设计令牌 `--wb-bg-card`（深色 #242424 = rgb(36,36,36)，
+          浅色 #FFFFFF）。**用户截图是浅色，所以看到的是白的。**
+          这里用 `!important` 直接压，不依赖令牌在两种主题下的具体取值。
+
+       ⚠️ 为什么不用「改令牌」的老办法（规则 22 那种）：
+          `--wb-bg-card` 是全站卡片通用令牌，聊天消息卡、列表卡都可能在用，
+          覆盖它等于全站一起改，风险远大于"这一页发白"。
+          这一页的类名（skills-view / skill-card / connector-panel /
+          connector-card）都是该页专属的，作用域清晰，照规则 21 的先例走。
+
+       ⚠️ 刻意**不动**的两处（功能性对比，不是洗白来源）：
+          .um-tab--active          专家/技能/连接器 的选中态 rgb(56,56,56)
+          .skill-card 里的 img     技能图标的白色 logo 底（27 个，合计 21K px）
+
+       ⚠️ 性能提醒：这一页卡片多（技能 99 张 + 连接器 14 张，加上专家页的 174 张）。
+          `backdrop-filter` 是有成本的，若滚动发涩，把下面两行 backdrop-filter
+          注释掉即可（只留半透明底，仍然透壁纸，但没有磨砂模糊）。 */
+:root.workbuddy-ambient-skin .skills-view,
+:root.workbuddy-ambient-skin .connector-panel {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+:root.workbuddy-ambient-skin .skill-card,
+:root.workbuddy-ambient-skin .connector-card {
+  background: color-mix(in srgb, var(--wbas-surface) calc(var(--wbas-panel-opacity) * 0.62), transparent) !important;
+  backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+  -webkit-backdrop-filter: blur(max(var(--wbas-material-blur), 14px)) saturate(1.05);
+}

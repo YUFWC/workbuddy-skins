@@ -1,0 +1,326 @@
+/* ============================================================
+   WorkBuddy 环境皮肤 —— 「资料库」iframe 玻璃化
+   ============================================================
+   背景（2026-09-17 用户截图：「进入后的资料库页面全白，需要去除」）
+
+   为什么单开一个文件、而不是并进 ambient.css：
+     资料库面板的真实渲染体是**跨域 iframe**
+       <iframe class="space-panel-iframe"
+               src="https://www.workbuddy.cn/space/home?theme=light&...">
+     它的 contentDocument 在父文档里读到的是 null，
+     父文档的 CSS **一条都进不去**（同源策略，不是权重问题）。
+     所以规则 23 无论怎么写都盖不住它 —— 之前「猜类名」的方向就是错的。
+
+   解法：
+     Electron 把这个 OOPIF 暴露成了**独立的 CDP target**（type=iframe），
+     于是可以 attach 到它自己的 target，往它自己的 document 里插 <style>。
+     由 scripts/_space.py 负责注入（inject.py 的 renderer_targets(all_types=True) 取它）。
+
+   ⚠️ 这个文档读不到父文档的 --wbas-* 变量（跨域），
+      所以本文件**自带一套字面量**，风格与 ambient.css 对齐：
+        浅色：surface 用白、文字深灰；深色：surface 用深蓝黑、文字浅。
+      主题由 <html class="dark"> / body 的 class 判断（站点自带 dark 类）。
+
+   站点类名特征：全部带 `-pc` 后缀（PC 端设计系统），与桌面端 app 无关。
+   ============================================================ */
+
+/* --- 1) 最外层：body 和主内容区 -------------------------------------
+   body 白底盖住整个 iframe，是「全白」的第一来源。
+   main.main-layout-content-pc 覆盖 46.9%，是第二来源。 */
+html.wbas-space,
+html.wbas-space body,
+html.wbas-space #app,
+html.wbas-space #root {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html.wbas-space main.main-layout-content-pc,
+html.wbas-space .main-layout-content-pc,
+html.wbas-space .main-layout-pc,
+html.wbas-space .main-layout-sidebar-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* ⚠️ `.main-layout-wrapper-pc` 是后来才暴露出来的一层：
+   它原本被 `.main-layout-content-pc`（同样白色）盖住，
+   所以第一轮扫描只看到 content、看不到它 —— 把 content 压平之后
+   它才浮出来，覆盖率 58%，成为新的最大白块。
+   「压平一层 → 下面一层露出来」是这个应用反复出现的模式（规则 16→19→20 同理），
+   所以排查时必须**压平后重新扫一遍**，不能扫一次就收工。 */
+html.wbas-space .main-layout-wrapper-pc,
+html.wbas-space .main-layout-wrapper-collapsed-pc,
+html.wbas-space .main-layout-wrapper-narrow-collapsed-pc,
+html.wbas-space .main-layout-body-pc,
+html.wbas-space .main-layout-container-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* --- 2) 页面级容器 -------------------------------------------------- */
+html.wbas-space .wb-home-page-pc,
+html.wbas-space .wb-home-page-title-pc,
+html.wbas-space .wb-feed-virtual-scroll-pc,
+html.wbas-space .doc-feed-page-pc,
+html.wbas-space .doc-feed-content-pc,
+html.wbas-space .space-page-pc,
+html.wbas-space .space-page-inner-pc,
+html.wbas-space .home-page-pc,
+html.wbas-space .home-page-inner-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* --- 2b) ⚠️ 第二轮：页内区块 + 左侧导航（用户 2nd 标注）---------------
+   ------------------------------------------------------------------
+   第一轮只压平了"整页"那三层（body / main-layout-content / -wrapper），
+   页面确实透了，但**页内的区块自己还有实心白底**，于是用户看到：
+     「顶部标题区还是白的」（蓝框①）
+     「Tab 栏 + 表头还是白的」（蓝框②）
+
+   ⚠️ 为什么第一轮没发现它们：`elementFromPoint` **采样法**只覆盖
+   "有像素落在采样点上"的元素，会被**更上层的白**挡住而看不到下面的白；
+   而且只修一次就重截，没有再扫。
+   → 改用 `scripts/_space_all.py`（**遍历 DOM 树**逐个 getComputedStyle），
+   一次把 21 个不透明元素全捞出来，去重后只有 **9 个类名**，一次修完。
+
+   ⚠️ `.wb-home-page-title-pc`（我第一轮就写进去了）**是空白的** ——
+   真正上色的是它的父级 `.wb-home-page-header-pc`。
+   同一个"名字像但没色"的坑还出现在 `.doc-feed-th-pc`（单元格，已玻璃化）
+   vs `.wb-feed-virtual-thead-pc`（**thead 才是实心白的那个**）——
+   所以不能靠猜类名，必须实测 computed 值。 */
+html.wbas-space .wb-home-page-header-pc,
+html.wbas-space .wb-home-tab-row-pc,
+html.wbas-space .doc-feed-tab-bar-pc,
+html.wbas-space .wb-home-tab-bar-pc,
+html.wbas-space .wb-feed-virtual-thead-pc,
+html.wbas-space .doc-feed-table-head-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 分组小标题（左导航里的「我的资料」「团队空间」这类）
+   ⚠️ 第四轮修正：原来是 rgb(255 255 255 / .28) 半透明，
+   用户明确要求**完全透明** —— 这类标题只是文字分组，
+   给底色反而在深色壁纸上糊出一块灰方块。 → transparent */
+html.wbas-space .workspace-tree-section-header-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* --- 2c) 左侧导航列（`knowledge-sidebar-pc`，整列 rgb(247,247,247)）---
+   用户截图里左半「资料库 / 搜索 / 最近 / 本地产物 / 我的资料 / 团队空间」
+   后面那一整条浅灰就是这个 280×858 的列。
+   它本身是**导航外壳**（不是内容），直接压透明；
+   里面的"选中项"和"树节点"保留很淡的一层，否则选中状态看不出来。 */
+html.wbas-space .knowledge-sidebar-pc,
+html.wbas-space .memory-sidebar-wrapper-pc,
+html.wbas-space .knowledge-sidebar-scroll-pc,
+html.wbas-space .knowledge-sidebar-section-pc,
+html.wbas-space .knowledge-sidebar-fixed-top-pc,
+html.wbas-space .memory-nav-wrapper-pc,
+html.wbas-space .memory-nav-list-pc,
+html.wbas-space .workspace-tree-wrapper-pc,
+html.wbas-space .workspace-tree-list-pc,
+html.wbas-space .workspace-tree-space-wrapper-pc,
+html.wbas-space .workspace-tree-space-children-pc,
+html.wbas-space .workspace-tree-node-wrapper-pc,
+html.wbas-space .workspace-tree-children-pc,
+html.wbas-space .simplebar-content,
+html.wbas-space .simplebar-wrapper,
+html.wbas-space .simplebar-mask,
+html.wbas-space .simplebar-offset {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 导航项（「本地产物」这类 BUTTON）+ 树里的小节点块
+   ⚠️ 第四轮修正：原来是 rgb(255 255 255 / .34) 半透明，
+   用户明确要求**完全透明**。整块底色交给壁纸，
+   「可点 / 选中」的信息改由下方 active 规则和 hover 单独承载。 */
+html.wbas-space .memory-nav-item-pc,
+html.wbas-space .workspace-tree-space-node-pc,
+html.wbas-space .workspace-tree-node-pc,
+html.wbas-space .workspace-tree-file-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+html.wbas-space .memory-nav-item-active-pc {
+  background: rgb(86 118 200 / .24) !important;
+  background-color: rgb(86 118 200 / .24) !important;
+}
+
+/* 底部容量条（.flex-1 是 Tailwind 的通用类，只在这个上下文里用）
+   ⚠️ 用祖先限定收窄，别全局命中 .flex-1（Tailwind 里满屏都是） */
+html.wbas-space .knowledge-sidebar-pc .flex-1,
+html.wbas-space .memory-sidebar-wrapper-pc .flex-1 {
+  background: rgb(255 255 255 / .26) !important;
+  background-color: rgb(255 255 255 / .26) !important;
+}
+
+/* --- 3) 卡片 / 面板 → 玻璃 ------------------------------------------
+   这些是内容卡片，保留「可点、可分层」的质感：
+   panel × 0.62 的半透明白 + blur，和桌面端规则 5/10/12/21 同一套配方。 */
+html.wbas-space .wb-home-guide-card-pc,
+html.wbas-space .wb-home-guide-playbook-card-pc,
+html.wbas-space .wb-home-type-card-pc,
+html.wbas-space .wb-home-stat-card-pc,
+html.wbas-space .wb-home-card-pc,
+html.wbas-space .doc-feed-card-pc,
+html.wbas-space .doc-feed-list-pc,
+html.wbas-space .space-card-pc,
+html.wbas-space .space-panel-pc,
+html.wbas-space .space-home-card-pc,
+html.wbas-space .home-guide-card-pc,
+html.wbas-space .home-guide-playbook-card-pc {
+  background: rgb(255 255 255 / .62) !important;
+  background-color: rgb(255 255 255 / .62) !important;
+  background-image: none !important;
+  backdrop-filter: blur(18px) saturate(1.05);
+  -webkit-backdrop-filter: blur(18px) saturate(1.05);
+  border-color: rgb(32 36 44 / .10) !important;
+}
+
+/* 表格 / 列表这类「功能容器」也玻璃化，否则一块块白 */
+html.wbas-space .doc-feed-table-pc,
+html.wbas-space .doc-feed-table-wrapper-pc,
+html.wbas-space .doc-feed-th-pc,
+html.wbas-space .doc-feed-td-pc,
+html.wbas-space .doc-feed-row-pc,
+html.wbas-space .doc-feed-header-pc,
+html.wbas-space .wb-feed-table-pc,
+html.wbas-space .wb-feed-row-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* 表头行（名称 / 所有者 / 位置 / 最近访问）
+   ⚠️ 第四轮修正：原来是 rgb(255 255 255 / .34) 半透明，
+   用户明确要求**完全透明** —— 表头那条白是整页最显眼的一条横带，
+   压在壁纸上非常突兀。行列区隔改由底部分隔线承担（见下条）。 */
+html.wbas-space .doc-feed-header-pc,
+html.wbas-space .doc-feed-th-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 表头与表体之间靠一条极淡的分隔线区分，替掉被移除的底色 */
+html.wbas-space .doc-feed-header-pc,
+html.wbas-space .doc-feed-thead-pc,
+html.wbas-space .wb-feed-virtual-thead-pc {
+  border-bottom: 1px solid rgb(32 36 44 / .10) !important;
+}
+
+/* --- 4) 控件（Tab / 按钮 / 下拉）------------------------------------
+   这些是真的控件，白底是它们的默认外观 → 改成玻璃，保留边框与 hover。 */
+html.wbas-space .doc-feed-tab-item-pc,
+html.wbas-space .wb-home-type-btn-pc,
+html.wbas-space .wb-home-guide-playbook-next-pc,
+html.wbas-space .wb-home-guide-playbook-icon-pc,
+html.wbas-space .doc-feed-search-pc,
+html.wbas-space .doc-feed-filter-pc,
+html.wbas-space .doc-feed-sort-pc,
+html.wbas-space .doc-feed-pagination-pc {
+  background: rgb(255 255 255 / .52) !important;
+  background-color: rgb(255 255 255 / .52) !important;
+  backdrop-filter: blur(14px) saturate(1.05);
+  -webkit-backdrop-filter: blur(14px) saturate(1.05);
+}
+
+/* 选中态：用一点主色，别再用纯白 */
+html.wbas-space .doc-feed-tab-active-pc,
+html.wbas-space .doc-feed-tab-item-pc[class*="active"],
+html.wbas-space .wb-home-type-btn-pc[class*="active"],
+html.wbas-space .wb-home-type-btn-active-pc {
+  background: rgb(86 118 200 / .22) !important;
+  background-color: rgb(86 118 200 / .22) !important;
+}
+
+/* --- 5) 内部小图标块 ------------------------------------------------ */
+html.wbas-space .wb-home-guide-playbook-icon-pc,
+html.wbas-space .wb-home-guide-card-icon-pc {
+  background: rgb(255 255 255 / .44) !important;
+  background-color: rgb(255 255 255 / .44) !important;
+}
+
+/* --- 6) 滚动条：别留一条白的 ---------------------------------------- */
+html.wbas-space ::-webkit-scrollbar {
+  background: transparent !important;
+  width: 10px;
+  height: 10px;
+}
+html.wbas-space ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+html.wbas-space ::-webkit-scrollbar-thumb {
+  background: rgb(32 36 44 / .18) !important;
+  border-radius: 6px;
+}
+
+/* --- 7) 深色主题 ----------------------------------------------------
+   站点自带 dark class，跟随系统/应用外观。 */
+html.wbas-space.dark body,
+html.wbas-space .dark body {
+  background: transparent !important;
+}
+
+html.wbas-space.dark .wb-home-guide-card-pc,
+html.wbas-space.dark .wb-home-guide-playbook-card-pc,
+html.wbas-space.dark .wb-home-type-card-pc,
+html.wbas-space.dark .wb-home-stat-card-pc,
+html.wbas-space.dark .wb-home-card-pc,
+html.wbas-space.dark .doc-feed-card-pc,
+html.wbas-space.dark .space-card-pc {
+  background: rgb(17 21 31 / .62) !important;
+  background-color: rgb(17 21 31 / .62) !important;
+  border-color: rgb(242 245 250 / .12) !important;
+}
+
+/* 深色主题：这 4 处在第四轮统一改成完全透明，和浅色保持一致 */
+html.wbas-space.dark .doc-feed-header-pc,
+html.wbas-space.dark .doc-feed-th-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 深色主题：左导航的分组标题 / 导航项 / 树节点 → 完全透明 */
+html.wbas-space.dark .workspace-tree-section-header-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+html.wbas-space.dark .memory-nav-item-pc,
+html.wbas-space.dark .workspace-tree-space-node-pc,
+html.wbas-space.dark .workspace-tree-node-pc,
+html.wbas-space.dark .workspace-tree-file-pc {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* 深色下分隔线用浅色 */
+html.wbas-space.dark .doc-feed-header-pc,
+html.wbas-space.dark .doc-feed-thead-pc,
+html.wbas-space.dark .wb-feed-virtual-thead-pc {
+  border-bottom: 1px solid rgb(242 245 250 / .12) !important;
+}
+/* 深色下唯一的例外：当前选中项必须还看得出来，否则导航就瞎了 */
+html.wbas-space.dark .memory-nav-item-active-pc {
+  background: rgb(142 175 255 / .26) !important;
+  background-color: rgb(142 175 255 / .26) !important;
+}
+html.wbas-space.dark .knowledge-sidebar-pc .flex-1,
+html.wbas-space.dark .memory-sidebar-wrapper-pc .flex-1 {
+  background: rgb(242 245 250 / .12) !important;
+  background-color: rgb(242 245 250 / .12) !important;
+}

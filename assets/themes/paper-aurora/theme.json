@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "paper-aurora",
+  "name": "晨雾极光",
+  "description": "雾色渐醒，极光落进安静的工作日常。",
+  "image": null,
+  "background": "radial-gradient(circle at 78% 28%, rgba(111, 214, 208, .5), transparent 27%), radial-gradient(circle at 58% 78%, rgba(148, 177, 255, .48), transparent 34%), linear-gradient(135deg, #f8fbfc, #eaf4f5 52%, #edf0fa)",
+  "appearance": "light",
+  "palette": {
+    "accent": "#3B9EA5",
+    "secondary": "#6F82C8",
+    "surface": "#F5FAFA",
+    "text": "#203438"
+  },
+  "art": {
+    "focusX": 0.76,
+    "focusY": 0.42,
+    "safeArea": "left"
+  },
+  "modes": {
+    "homeOpacity": 1,
+    "workOpacity": 1,
+    "detailOpacity": 1,
+    "sidebarOpacity": 0.91
+  },
+  "material": {
+    "style": "studio",
+    "panelOpacity": 0.86,
+    "cardOpacity": 0.79,
+    "blur": 20,
+    "radius": 16,
+    "borderStrength": 0.14,
+    "shadowStrength": 0.09
+  }
+}

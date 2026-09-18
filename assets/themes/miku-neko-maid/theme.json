@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "miku-neko-maid",
+  "name": "初音未来 · 猫咪女仆",
+  "description": "清透青色与柔软微光，陪灵感轻盈发生。",
+  "image": "hero.webp",
+  "background": null,
+  "appearance": "light",
+  "palette": "auto",
+  "art": {
+    "focusX": 0.5,
+    "focusY": 0.5,
+    "safeArea": "auto"
+  },
+  "modes": {
+    "homeOpacity": 0.98,
+    "workOpacity": 0.98,
+    "detailOpacity": 0.98,
+    "sidebarOpacity": 0.94
+  },
+  "material": {
+    "style": "studio",
+    "panelOpacity": 0.88,
+    "cardOpacity": 0.82,
+    "blur": 20,
+    "radius": 16,
+    "borderStrength": 0.12,
+    "shadowStrength": 0.08
+  }
+}
