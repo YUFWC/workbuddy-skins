@@ -1,0 +1,139 @@
+@echo off
+setlocal EnableExtensions
+title WorkBuddy 美化注入
+
+rem ============================================================
+rem  一键注入 WorkBuddy 皮肤（纯 Python，不依赖 PowerShell / Node）
+rem
+rem  双击即可：
+rem    * 不问你 Y/N
+rem    * 注入成功 → 命令行窗口自动关闭
+rem    * 注入失败 → 停下让你看完错误，按任意键才关闭
+rem
+rem  流程：定位 WorkBuddyAI.exe → 需要时带调试端口重启 → 注入皮肤
+rem  当前壁纸和右上角浮球里的调参都会保留。
+rem
+rem  注意：下面挑 Python 的三段**故意不写成一个 ( ) 块** ——
+rem  批处理里块内的 %VAR% 是在解析整个块时就展开的，
+rem  `set "PY=%CAND%"` 会拿到旧值。所以一律用 goto 串起来。
+rem ============================================================
+
+rem 某些终端（从 WorkBuddy 内部启动的 cmd）PATH 里没有 System32，
+rem 会让 findstr 这类命令找不到，先把系统路径补回去。
+if not defined SystemRoot set "SystemRoot=C:\Windows"
+set "PATH=%SystemRoot%\System32;%SystemRoot%;%SystemRoot%\System32\Wbem;%PATH%"
+
+rem 注意：下面这些 {XXX} 占位符由 _make_bats.py 在**生成时**替换成本机实际路径。
+rem 模板里不能写死绝对路径：那既不可移植，也会把开发者的用户目录带进仓库。
+set "SCRIPT={SCRIPT}"
+
+rem 目标版本与传给 inject.py 的参数。本文件是"自动"版：
+rem   自动 = 只跑了一个就用那个；两个都在跑时优先国际版。
+rem 同目录另外两个变体由 _make_bats.py 从本文件生成：
+rem   一键美化-国内版.bat  → --target cn
+rem   一键美化-国际版.bat  → --target oversea
+rem 也可以直接带参数双击/运行：一键美化.bat cn
+set "TARGET_LABEL=自动（本机装了多个版本时优先国际版）"
+set "TARGET_ARG=%*"
+
+rem ---- 视频背景（可选）-------------------------------------------------
+rem 想让背景动起来：在本文件同目录建一个「视频背景.txt」，
+rem 里面只写一行视频路径，例如：
+rem     D:/videos/bg.mp4
+rem
+rem 为什么用旁挂文件而不是写进 bat：路径里的空格/中文/引号很容易
+rem 在批处理里被解析坏；而且这样用户可以随时删掉该文件来关掉视频，
+rem 不用改动 bat 本身。
+rem
+rem 路径**必须用 Windows 盘符写法**（D:/...），不要用 Git Bash 的 /d/...
+rem 约定：文件里写 - 或 off 表示显式关闭视频。
+set "VIDEO_FILE=%~dp0视频背景.txt"
+set "VIDEO_ARG="
+if not exist "%VIDEO_FILE%" goto :video_done
+rem 用 for /f 读第一行非空内容；eol=; 让分号能当注释
+for /f "usebackq eol=; tokens=* delims=" %%V in ("%VIDEO_FILE%") do (
+    if not defined VIDEO_LINE set "VIDEO_LINE=%%V"
+)
+if not defined VIDEO_LINE goto :video_done
+if /i "%VIDEO_LINE%"=="off" set "VIDEO_LINE=-"
+if /i "%VIDEO_LINE%"=="-" (
+    set "VIDEO_ARG=--video-off"
+    echo  视频背景：按「视频背景.txt」要求关闭
+) else (
+    set "VIDEO_ARG=--video "%VIDEO_LINE%""
+    echo  视频背景：%VIDEO_LINE%
+)
+:video_done
+
+rem ---- 挑一个可用的 Python（按优先级）----------------------------------
+rem 下面的 PY 候选由 _make_bats.py 按本机实际存在的解释器展开成
+rem   set "PY=<路径>" / if exist "%PY%" goto :try_py 的重复序列。
+rem 为什么不写成 for 循环：批处理块内的 %VAR% 在解析整个块时就展开，
+rem 会拿到旧值。展开成平铺的直线代码最稳。
+{PY_CHAIN}
+
+:try_py
+rem 实跑一次确认这个 python 真能用
+rem （PATH 里可能有个 WindowsApps 的商店占位程序，会假通过）
+"%PY%" -c "import sys" >nul 2>&1
+if errorlevel 1 goto :no_py
+if not exist "%SCRIPT%" goto :no_script
+
+echo ============================================================
+echo  WorkBuddy 美化注入
+echo ============================================================
+echo  python : %PY%
+echo  脚本   : %SCRIPT%
+echo  目标   : %TARGET_LABEL%
+echo.
+echo  注意：注入过程会重启对应的 WorkBuddy（包括它当前的对话窗口），
+echo        请先保存输入框里还没发出去的内容。
+echo.
+
+"%PY%" "%SCRIPT%" %TARGET_ARG% %VIDEO_ARG%
+set "CODE=%ERRORLEVEL%"
+
+if not "%CODE%"=="0" goto :failed
+
+rem ---- 收尾自检：确认「资料库」面板的自愈能力真的就位 ----
+rem 为什么值得多跑一次：资料库是**跨域 iframe**，它在面板被打开后才创建；
+rem 而我们注入时它可能还没打开。space_doctor 只做非破坏性检查/补装，
+rem 并把「自愈器是否生效」明确打印出来 —— 免得用户过一会儿发现又是白的。
+rem 它失败**不影响**注入本身的成功判定（所以不检查它的退出码）。
+set "DOCTOR={DOCTOR}"
+if not exist "%DOCTOR%" goto :done
+echo.
+"%PY%" "%DOCTOR%" %TARGET_ARG%
+echo.
+
+:done
+rem ---- 成功：按任意键关闭（有输出要看，所以不直接 exit）----
+echo 注入完成。诊断明细见：
+echo   %LOCALAPPDATA%\WorkBuddyAmbientSkin\inject-py.log
+exit
+
+:failed
+echo.
+echo ------------------------------------------------------------
+echo  [失败] 注入没有成功，退出码 = %CODE%
+echo  日志：%LOCALAPPDATA%\WorkBuddyAmbientSkin\inject-py.log
+echo ------------------------------------------------------------
+echo.
+pause
+exit /b %CODE%
+
+:no_py
+echo.
+echo [失败] 找不到可用的 Python。已尝试：
+{PY_LIST_ECHO}
+echo.
+pause
+exit /b 2
+
+:no_script
+echo.
+echo [失败] 找不到注入脚本：
+echo          %SCRIPT%
+echo.
+pause
+exit /b 3
