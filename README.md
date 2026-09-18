@@ -21,64 +21,16 @@ Ambient Skin 让首页留住一张你喜欢的画面；进入对话、任务或�
 
 ```shell
 # macOS
-"$HOME/.workbuddy/skills/workbuddy-ambient-skin/scripts/apply.command" --theme paper-aurora
+"$HOME/workbuddy-skins/scripts/apply.command" --theme paper-aurora
 
 # Windows PowerShell
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" terminal-apply --theme paper-aurora --restart confirmed
-```
-
-### 初音未来 · 猫咪女仆 / Miku Neko Maid
-
-青色、柔白与轻粉构成的明亮主题。OKLCH 引擎会从图片自动生成界面配色，适合首页展示与轻松工作。
-
-<p align="center">
-  <img src="assets/images/preview-miku-neko-maid.png" alt="初音未来猫咪女仆主题预览" width="900"><br>
-  <sub>青色明亮 · 自动取色 · 真实 WorkBuddy 注入效果</sub>
-</p>
-
-```shell
-# macOS
-"$HOME/.workbuddy/skills/workbuddy-ambient-skin/scripts/apply.command" --theme miku-neko-maid
-
-# Windows PowerShell
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" terminal-apply --theme miku-neko-maid --restart confirmed
-```
-
-### 哆啦A梦 · 瑞雪迎福 / Doraemon Snow Fortune
-
-冰雪蓝、灯笼红与暖金光线构成的节日主题。工作页和详情页会自动降低壁纸强度，兼顾氛围与阅读。
-
-<p align="center">
-  <img src="assets/images/preview-doraemon-snow-fortune.png" alt="哆啦A梦瑞雪迎福主题预览" width="900"><br>
-  <sub>冬日暖金 · 自动取色 · 真实 WorkBuddy 注入效果</sub>
-</p>
-
-```shell
-# macOS
-"$HOME/.workbuddy/skills/workbuddy-ambient-skin/scripts/apply.command" --theme doraemon-snow-fortune
-
-# Windows PowerShell
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" terminal-apply --theme doraemon-snow-fortune --restart confirmed
-```
-
-### 雷神 · 雷寂永恒 / Raiden · Eternal Thunder
-
-此间寂灭，万雷归宗。一眼惊鸿，一剑封神。深紫雷光搭配浅薰衣草玻璃界面，侧栏与卡片保持明亮清晰；工作页会主动压低壁纸强度，兼顾氛围和文字阅读。
-
-<p align="center">
-  <img src="assets/images/preview-genshin-raiden-shogun.png" alt="雷神雷寂永恒主题预览" width="900"><br>
-  <sub>深紫雷光 · 浅紫玻璃 · 真实 WorkBuddy 注入效果</sub>
-</p>
-
-```bash
-"$HOME/.workbuddy/skills/workbuddy-ambient-skin/scripts/apply.command" --theme genshin-raiden-shogun
-```
-
-```powershell
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" terminal-apply --theme genshin-raiden-shogun --restart confirmed
+& "$HOME\workbuddy-skins\scripts\workbuddy-ambient.ps1" terminal-apply --theme paper-aurora --restart confirmed
 ```
 
 三套角色主题使用项目维护者提供的图片。角色及素材相关权利归相应权利方所有；公开分发前请确认素材授权范围。
+<img width="1714" height="876" alt="image" src="https://github.com/user-attachments/assets/fef9647e-cf50-4a86-8c50-591d373c30a7" />
+<img width="1714" height="876" alt="image" src="https://github.com/user-attachments/assets/e1281db9-7a65-4258-b4be-15113fcec40f" />
+<img width="1714" height="876" alt="image" src="https://github.com/user-attachments/assets/797ff9ae-1cab-45ba-b133-25d6a74fa1d2" />
 
 ## 它改变什么
 
@@ -88,30 +40,24 @@ Ambient Skin 让首页留住一张你喜欢的画面；进入对话、任务或�
 - **看得懂你的图片**：用 OKLCH 感知色彩提取主色与差异化辅色，并判断明暗、视觉焦点和文字安全区。
 - **随时换，也随时退**：右上角切换主题；暂停或完整恢复都不碰官方安装文件。
 
+
+
 ## 一分钟开始
-
-如果你在支持 Skill 的 AI 中使用它，直接说：
-
-> 使用 `workbuddy-ambient-skin` 给我的 WorkBuddy 换一个安静的皮肤。
-
-AI 会按 [SKILL.md](SKILL.md) 检查环境、推荐主题，并显示可直接复制的命令；重启操作只会在你自己的 Terminal 或 PowerShell 中发生。
-
-手动使用：
 
 **macOS**
 
 ```bash
-"$HOME/.workbuddy/skills/workbuddy-ambient-skin/scripts/workbuddy-ambient.sh" doctor
-"$HOME/.workbuddy/skills/workbuddy-ambient-skin/scripts/workbuddy-ambient.sh" list
-"$HOME/.workbuddy/skills/workbuddy-ambient-skin/scripts/apply.command" --theme paper-aurora
+"$HOME/workbuddy-skins/scripts/workbuddy-ambient.sh" doctor
+"$HOME/workbuddy-ambient-skins/scripts/workbuddy-ambient.sh" list
+"$HOME/workbuddy-ambient-skins/scripts/apply.command" --theme paper-aurora
 ```
 
 **Windows PowerShell**
 
 ```powershell
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" doctor
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" list
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" terminal-apply --theme paper-aurora --restart confirmed
+& "$HOME\workbuddy-skins\scripts\workbuddy-ambient.ps1" doctor
+& "$HOME\workbuddy-skins\scripts\workbuddy-ambient.ps1" list
+& "$HOME\workbuddy-skins\scripts\workbuddy-ambient.ps1" terminal-apply --theme paper-aurora --restart confirmed
 ```
 
 `doctor` 检查环境，`list` 查看可用主题，最后一条命令应用主题。应用命令会重启 WorkBuddy，请先保存未完成的输入。
@@ -154,29 +100,6 @@ AI 会按 [SKILL.md](SKILL.md) 检查环境、推荐主题，并显示可直接�
 双击时会先确认包内素材、加载注入器，再创建界面；如果初始化异常，会写入
 `%LOCALAPPDATA%\WorkBuddyAmbientSkin\launcher-error.log`。
 
-## 日常动作
-
-皮肤激活后，常用的管理命令：
-
-**macOS**
-
-```bash
-scripts/workbuddy-ambient.sh switch --theme THEME_ID   # 即时切换
-scripts/workbuddy-ambient.sh status                     # 查看状态
-scripts/workbuddy-ambient.sh pause                      # 暂停皮肤
-scripts/workbuddy-ambient.sh restore --restart confirmed # 完整恢复
-```
-
-**Windows PowerShell**
-
-```powershell
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" switch --theme THEME_ID
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" status
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" pause
-& "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\workbuddy-ambient.ps1" restore --restart confirmed
-```
-
-`switch` 和 `pause` 需要当前皮肤会话仍在运行。WorkBuddy 完全退出后，再次执行完整 apply 命令即可。
 
 ## 把自己的图片带进来
 
@@ -195,16 +118,6 @@ scripts/workbuddy-ambient.sh restore --restart confirmed # 完整恢复
 - 将图片缩放为最大边 1600px 的 WebP，减少常驻开销。
 
 菜单最多保留最近 8 张图片。每张图片右侧的 `✎` 可以直接展开名称编辑器，`×` 会展开删除确认；两者都在菜单内完成，不依赖系统弹窗。重命名不会重新分析图片。
-
-通过命令管理图片主题：
-
-```bash
-scripts/workbuddy-ambient.sh create --image "/absolute/path/background.webp" --name "My Theme"
-scripts/workbuddy-ambient.sh rename --theme THEME_ID --name "新名称"
-scripts/workbuddy-ambient.sh delete --theme THEME_ID --confirm yes
-```
-
-命令行删除采用可恢复移除，文件会转移到本机的 `deleted-themes` 目录。内置主题不能删除或重命名。
 
 支持 PNG、JPEG、WebP，单张不超过 15 MB、5000 万像素。纯背景图通常比带文字、按钮或界面截图的图片更自然。
 
@@ -267,7 +180,7 @@ python scripts/inject.py --port 9348 --video-off
 如果不想依赖仓库路径，可将运行时安装到 `%LOCALAPPDATA%\WorkBuddyAmbientSkin\engine`，并创建快捷方式：
 
 ```powershell
-powershell -NoLogo -NoProfile -ExecutionPolicy RemoteSigned -File "$HOME\.workbuddy\skills\workbuddy-ambient-skin\scripts\install-windows.ps1"
+powershell -NoLogo -NoProfile -ExecutionPolicy RemoteSigned -File "$HOME\workbuddy-skins\scripts\install-windows.ps1"
 ```
 
 安装器先写入临时目录，验证后再替换旧版本；更新失败会恢复原版本。不需要快捷方式时加 `-NoShortcuts`。不会注册开机自启、常驻托盘或后台服务。
