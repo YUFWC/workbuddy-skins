@@ -1,4 +1,4 @@
-# WorkBuddy Ambient Skin
+# WorkBuddy Skins
 
 WorkBuddy 不必一直是一块灰色的工作面板。
 
