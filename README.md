@@ -196,7 +196,7 @@ Ambient Skin 通过仅绑定 `127.0.0.1` 的 Chrome DevTools Protocol 找到 Wor
 
 ## 感谢
 
-本项目参考了 [Codex Dream Skin](https://github.com/Fei-Away/Codex-Dream-Skin) 的换肤设计理念，感谢其提供的创意启发。
+本项目参考了 [workbuddy ambient skin](https://github.com/kimilee94/workbuddy-ambient-skin) 的换肤设计理念，感谢其提供的创意启发。
 
 ## 开源协议
 
