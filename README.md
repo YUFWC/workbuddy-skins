@@ -6,18 +6,13 @@ Ambient Skin 让首页留住一张你喜欢的画面；进入对话、任务或�
 
 > 非腾讯官方产品。支持 macOS 与 Windows，不修改 WorkBuddy 应用、`app.asar` 或应用签名。
 
-## 内置主题
+## 主题
 
 以下预览均为 WorkBuddy 实际应用主题后的界面效果。
 
-### 晨雾极光 / Paper Aurora
-
-浅灰与冰蓝组成的通透办公主题。背景由原创 CSS 渐变生成，聊天区保持克制，适合文档与日常工作。
-
-<p align="center">
-  <img src="assets/images/preview-paper-aurora.png" alt="晨雾极光主题预览" width="900"><br>
-  <sub>浅色 · 原创渐变 · 真实 WorkBuddy 注入效果</sub>
-</p>
+<img width="1714" height="876" alt="image" src="https://github.com/user-attachments/assets/fef9647e-cf50-4a86-8c50-591d373c30a7" />
+<img width="1714" height="876" alt="image" src="https://github.com/user-attachments/assets/e1281db9-7a65-4258-b4be-15113fcec40f" />
+<img width="1714" height="876" alt="image" src="https://github.com/user-attachments/assets/797ff9ae-1cab-45ba-b133-25d6a74fa1d2" />
 
 ```shell
 # macOS
@@ -28,9 +23,7 @@ Ambient Skin 让首页留住一张你喜欢的画面；进入对话、任务或�
 ```
 
 三套角色主题使用项目维护者提供的图片。角色及素材相关权利归相应权利方所有；公开分发前请确认素材授权范围。
-<img width="1714" height="876" alt="image" src="https://github.com/user-attachments/assets/fef9647e-cf50-4a86-8c50-591d373c30a7" />
-<img width="1714" height="876" alt="image" src="https://github.com/user-attachments/assets/e1281db9-7a65-4258-b4be-15113fcec40f" />
-<img width="1714" height="876" alt="image" src="https://github.com/user-attachments/assets/797ff9ae-1cab-45ba-b133-25d6a74fa1d2" />
+
 
 ## 它改变什么
 
